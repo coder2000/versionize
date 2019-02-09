@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
-using Xunit;
-using Versionize.Tests.TestSupport;
+﻿using System.IO;
 using Versionize.CommandLine;
+using Versionize.Tests.TestSupport;
+using Xunit;
 
 namespace Versionize.Tests
 {

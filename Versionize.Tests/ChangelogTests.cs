@@ -1,15 +1,13 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Xunit;
-using Versionize.Tests.TestSupport;
-using Versionize.CommandLine;
-using System.Collections.Generic;
 
 namespace Versionize.Tests
 {
     public class ChangelogTests : IDisposable
     {
-        private string _testDirectory;
+        private readonly string _testDirectory;
 
         public ChangelogTests()
         {

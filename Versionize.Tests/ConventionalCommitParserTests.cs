@@ -1,11 +1,5 @@
-using System;
-using System.IO;
+﻿using System.Linq;
 using Xunit;
-using Versionize.Tests.TestSupport;
-using Versionize.CommandLine;
-using System.Collections.Generic;
-using LibGit2Sharp;
-using System.Linq;
 
 namespace Versionize.Tests
 {
@@ -74,17 +68,5 @@ namespace Versionize.Tests
             Assert.Equal("BREAKING CHANGE", breakingChangeNote.Title);
             Assert.Equal("this will break rc1 compatibility", breakingChangeNote.Text);
         }
-    }
-
-    public class TestCommit : Commit
-    {
-        private readonly string _message;
-
-        public TestCommit(string message)
-        {
-            _message = message;
-        }
-
-        public override string Message { get => _message; }
     }
 }

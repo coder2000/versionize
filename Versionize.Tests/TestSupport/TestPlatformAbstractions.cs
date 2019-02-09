@@ -15,12 +15,10 @@ namespace Versionize.Tests.TestSupport
 
         public void WriteLine(string message, Color color)
         {
-            
         }
 
         public void WriteLineFormatted(string message, Color color, Formatter[] messageFormatters)
         {
-           
         }
     }
 }

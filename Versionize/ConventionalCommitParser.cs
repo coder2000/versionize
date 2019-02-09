@@ -1,16 +1,16 @@
-﻿using LibGit2Sharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using LibGit2Sharp;
 
 namespace Versionize
 {
     public class ConventionalCommitParser
     {
-        static readonly string[] noteKeywords = new string[] { "BREAKING CHANGE" };
+        private static readonly string[] s_noteKeywords = new string[] { "BREAKING CHANGE" };
 
-        private static readonly Regex HeaderPattern = new Regex("^(?<type>\\w*)(?:\\((?<scope>.*)\\))?: (?<subject>.*)$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
+        private static readonly Regex s_headerPattern = new Regex("^(?<type>\\w*)(?:\\((?<scope>.*)\\))?: (?<subject>.*)$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
         public ConventionalCommitParser()
         {
@@ -40,7 +40,7 @@ namespace Versionize
                 return conventionalCommit;
             }
 
-            var match = HeaderPattern.Match(header);
+            var match = s_headerPattern.Match(header);
 
             if (match.Success)
             {
@@ -55,7 +55,7 @@ namespace Versionize
 
             for (var i = 1; i < commitMessageLines.Count; i++)
             {
-                foreach (var noteKeyword in noteKeywords)
+                foreach (var noteKeyword in s_noteKeywords)
                 {
                     var line = commitMessageLines[i];
                     if (line.StartsWith($"{noteKeyword}:", StringComparison.InvariantCulture))

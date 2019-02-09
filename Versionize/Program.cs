@@ -7,7 +7,7 @@ namespace Versionize
     [Command(
         Name = "Versionize",
         Description = "Automatic versioning and CHANGELOG generation, using conventional commit messages")]
-    public class Program
+    public static class Program
     {
         public static int Main(string[] args)
         {
@@ -44,6 +44,6 @@ namespace Versionize
             return app.Execute(args);
         }
 
-        static string GetVersion() => typeof(Program).Assembly.GetName().Version.ToString();
+        private static string GetVersion() => typeof(Program).Assembly.GetName().Version.ToString();
     }
 }
