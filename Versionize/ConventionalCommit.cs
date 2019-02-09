@@ -11,13 +11,5 @@ namespace Versionize
         public string Subject { get; set; }
 
         public List<ConventionalCommitNote> Notes { get; set; } = new List<ConventionalCommitNote>();
-
-    }
-
-    public class ConventionalCommitNote
-    {
-        public string Title { get; set; }
-
-        public string Text { get; set; }
     }
 }

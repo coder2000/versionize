@@ -80,7 +80,9 @@ namespace Versionize.Tests
             {
                 Directory.Delete(_testDirectory, true);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
     }
 }
