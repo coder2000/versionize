@@ -1,5 +1,5 @@
+﻿using Colorful;
 using System.Drawing;
-using Colorful;
 
 namespace Versionize.CommandLine
 {
@@ -30,6 +30,6 @@ namespace Versionize.CommandLine
             Platform.WriteLineFormatted(stepMessage, Color.White, messageFormatters);
         }
 
-        public static LogLevel Verbosity {get => Platform.Verbosity; set => Platform.Verbosity = value; }
+        public static LogLevel Verbosity { get => Platform.Verbosity; set => Platform.Verbosity = value; }
     }
 }

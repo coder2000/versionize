@@ -1,8 +1,5 @@
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using McMaster.Extensions.CommandLineUtils;
 using System.IO;
-using System.Reflection;
-using McMaster.Extensions.CommandLineUtils;
 using Versionize.CommandLine;
 
 namespace Versionize
@@ -14,8 +11,10 @@ namespace Versionize
     {
         public static int Main(string[] args)
         {
-            var app = new CommandLineApplication();
-            app.Name = "versionize";
+            var app = new CommandLineApplication
+            {
+                Name = "versionize"
+            };
             app.HelpOption();
             app.VersionOption("-v|--version", GetVersion());
 
@@ -29,14 +28,14 @@ namespace Versionize
 
             app.OnExecute(() =>
             {
-                CommandLineUI.Verbosity = optionSilent.HasValue()?LogLevel.Silent:LogLevel.All;
+                CommandLineUI.Verbosity = optionSilent.HasValue() ? LogLevel.Silent : LogLevel.All;
 
                 WorkingCopy
                     .Discover(optionWorkingDirectory.Value() ?? Directory.GetCurrentDirectory())
                     .Versionize(
-                        dryrun: optionDryRun.HasValue(), 
-                        skipDirtyCheck: optionSkipDirty.HasValue(), 
-                        skipCommit: optionSkipCommit.HasValue(), 
+                        dryrun: optionDryRun.HasValue(),
+                        skipDirtyCheck: optionSkipDirty.HasValue(),
+                        skipCommit: optionSkipCommit.HasValue(),
                         releaseVersion: optionReleaseAs.Value());
 
                 return 0;

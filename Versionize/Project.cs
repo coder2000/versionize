@@ -36,8 +36,10 @@ namespace Versionize
 
         private static Version ReadVersion(string projectFile)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.PreserveWhitespace = true;
+            XmlDocument doc = new XmlDocument
+            {
+                PreserveWhitespace = true
+            };
 
             try
             {
@@ -50,7 +52,7 @@ namespace Versionize
 
             var versionString = doc.SelectSingleNode("/Project/PropertyGroup/Version")?.InnerText;
 
-            if (String.IsNullOrWhiteSpace(versionString))
+            if (string.IsNullOrWhiteSpace(versionString))
             {
                 throw new InvalidOperationException($"Project {projectFile} contains no or an empty <Version> XML Element. Please add one if you want to version this project - for example use <Version>1.0.0</Version>");
             }
@@ -67,8 +69,10 @@ namespace Versionize
 
         public void WriteVersion(Version nextVersion)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.PreserveWhitespace = true;
+            XmlDocument doc = new XmlDocument
+            {
+                PreserveWhitespace = true
+            };
 
             try
             {

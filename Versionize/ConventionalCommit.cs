@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Versionize
 {
@@ -18,7 +17,7 @@ namespace Versionize
     public class ConventionalCommitNote
     {
         public string Title { get; set; }
-        
+
         public string Text { get; set; }
     }
 }

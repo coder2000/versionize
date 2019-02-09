@@ -1,7 +1,7 @@
+﻿using LibGit2Sharp;
 using System;
 using System.IO;
 using System.Linq;
-using LibGit2Sharp;
 using static Versionize.CommandLine.CommandLineUI;
 
 namespace Versionize
@@ -16,7 +16,7 @@ namespace Versionize
         }
 
         public void Versionize(
-            bool dryrun = false, 
+            bool dryrun = false,
             bool skipDirtyCheck = false,
             bool skipCommit = false,
             string releaseVersion = null)
@@ -60,7 +60,7 @@ namespace Versionize
 
                 var nextVersion = versionTag == null ? projects.Version : versionIncrement.NextVersion(projects.Version);
 
-                if (!String.IsNullOrWhiteSpace(releaseVersion))
+                if (!string.IsNullOrWhiteSpace(releaseVersion))
                 {
                     try
                     {

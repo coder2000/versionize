@@ -1,8 +1,8 @@
+﻿using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using LibGit2Sharp;
 
 namespace Versionize
 {
@@ -30,7 +30,7 @@ namespace Versionize
                     StringSplitOptions.None
                 )
                 .Select(line => line.Trim())
-                .Where(line => !String.IsNullOrWhiteSpace(line))
+                .Where(line => !string.IsNullOrWhiteSpace(line))
                 .ToList();
 
             var header = commitMessageLines.FirstOrDefault();
@@ -53,11 +53,12 @@ namespace Versionize
                 conventionalCommit.Subject = header;
             }
 
-            for (var i =1;i<commitMessageLines.Count;i++) {
+            for (var i = 1; i < commitMessageLines.Count; i++)
+            {
                 foreach (var noteKeyword in noteKeywords)
                 {
                     var line = commitMessageLines[i];
-                    if (line.StartsWith($"{noteKeyword}:"))
+                    if (line.StartsWith($"{noteKeyword}:", StringComparison.InvariantCulture))
                     {
                         conventionalCommit.Notes.Add(new ConventionalCommitNote
                         {

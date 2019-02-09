@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,25 +30,25 @@ All notable changes to this project will be documented in this file. See [versio
             markdown += "\n";
             markdown += "\n";
 
-            var bugFixes = BuildBlock("Bug Fixes", commits.Where(commit => "fix".Equals(commit.Type)));
+            var bugFixes = BuildBlock("Bug Fixes", commits.Where(commit => "fix".Equals(commit.Type, StringComparison.InvariantCulture)));
 
-            if (!String.IsNullOrWhiteSpace(bugFixes))
+            if (!string.IsNullOrWhiteSpace(bugFixes))
             {
                 markdown += bugFixes;
                 markdown += "\n";
             }
 
-            var features = BuildBlock("Features", commits.Where(commit => "feat".Equals(commit.Type)));
+            var features = BuildBlock("Features", commits.Where(commit => "feat".Equals(commit.Type, StringComparison.InvariantCulture)));
 
-            if (!String.IsNullOrWhiteSpace(features))
+            if (!string.IsNullOrWhiteSpace(features))
             {
                 markdown += features;
                 markdown += "\n";
             }
 
-            var breaking = BuildBlock("Breaking Changes", commits.Where(commit => commit.Notes.Any(note => "BREAKING CHANGE".Equals(note.Title))));
+            var breaking = BuildBlock("Breaking Changes", commits.Where(commit => commit.Notes.Any(note => "BREAKING CHANGE".Equals(note.Title, StringComparison.InvariantCulture))));
 
-            if (!String.IsNullOrWhiteSpace(breaking))
+            if (!string.IsNullOrWhiteSpace(breaking))
             {
                 markdown += breaking;
                 markdown += "\n";
@@ -58,7 +58,7 @@ All notable changes to this project will be documented in this file. See [versio
             {
                 var contents = File.ReadAllText(_file.FullName);
 
-                var firstReleaseHeadlineIdx = contents.IndexOf("##");
+                var firstReleaseHeadlineIdx = contents.IndexOf("##", StringComparison.InvariantCulture);
 
                 if (firstReleaseHeadlineIdx >= 0)
                 {

@@ -1,6 +1,6 @@
+﻿using Colorful;
 using System;
 using System.Drawing;
-using Colorful;
 using Console = Colorful.Console;
 
 namespace Versionize.CommandLine

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +7,7 @@ namespace Versionize
 {
     public class Projects
     {
-        private IEnumerable<Project> _projects;
+        private readonly IEnumerable<Project> _projects;
 
         private Projects(IEnumerable<Project> projects)
         {
